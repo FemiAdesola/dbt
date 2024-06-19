@@ -16,7 +16,8 @@ c.country,
 p.productid,
 p.category,
 p.productname,
-p.subcategory
+p.subcategory,
+{{ markup('ordersellingprice', 'ordercostprice' ) }} as markup ---- for markup in macro folder
 FROM {{ ref('raw_orders') }} as o
 --- for join with another table (raw_customers)
 left join {{ ref('raw_customers') }} as c
