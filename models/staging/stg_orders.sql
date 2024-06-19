@@ -18,7 +18,8 @@ p.productid,
 p.category,
 p.productname,
 p.subcategory,
-{{ markup('ordersellingprice', 'ordercostprice' ) }} as markup ---- for markup in macro folder
+{{ markup('ordersellingprice', 'ordercostprice' ) }} as markup, ---- for markup in macro folder
+d.delivery_team ---for adding delivery team
 FROM {{ ref('raw_orders') }} as o
 --- for join with another table (raw_customers)
 left join {{ ref('raw_customers') }} as c
@@ -27,3 +28,7 @@ on o.customerid = c.customerid
 --- for join with another table (raw_product)
 left join {{ ref('raw_product') }} as p
 on o.productid = p.productid
+---for adding delivery team
+left join {{ ref('delivery_team') }} as d
+on o.shipmode = d.shipmode
+
