@@ -2,14 +2,17 @@ version: 2
 
 sources:
   - name: globalmart
+    description: a clone of the Snowflake Database
     database: raw
     schema: globalmart
     tables:
       - name: customer
       - name: orders
-      # Test for orders id if it is unique or not null
+        description: raw orders table
+      # Test for orders id if it is unique or not null, also we describe the source data
         columns:
           - name: orderid
+            description: primary key for orders
             tests:
               - unique
               - not_null
