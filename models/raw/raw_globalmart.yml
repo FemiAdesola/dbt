@@ -1,0 +1,26 @@
+version: 2
+models:
+  # Test for raw_customers as a generic test for testing customerid where is unique or not null
+
+  - name: raw_customers
+    columns:
+      - name: customerid
+        tests:
+          - unique
+          - not_null
+
+  # Test for raw_orders as a single test for testing shipmode where there are many classes and uniqueness of order id
+  - name: raw_orders
+    columns:
+      - name: orderid
+        tests:
+          - unique
+          - not_null
+      - name: shipmode
+        tests:
+          - accepted_values:
+              values:
+                - "First Class"
+                - "Same Day"
+                - "Second Class"
+                - "Standard Class"
