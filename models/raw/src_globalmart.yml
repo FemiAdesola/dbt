@@ -7,7 +7,15 @@ sources:
     tables:
       - name: customer
       - name: orders
+      # Test for orders id if it is unique or not null
+        columns:
+          - name: orderid
+            tests:
+              - unique
+              - not_null
       - name: product
+
+
     
         
           
